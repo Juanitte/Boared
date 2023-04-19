@@ -3,15 +3,39 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?scenebuilder-stylesheet src/main/resources/com/juanite/style.css?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.juanite.controller.LoginController">
-   <ToolBar id="navbar" prefHeight="40.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="589.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.juanite.controller.LoginController">
+   <ToolBar id="navbar" prefHeight="50.0" prefWidth="477.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="112.0">
       <items>
          <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@icon.png" />
             </image>
          </ImageView>
+         <Label fx:id="lbl_titlebar" prefHeight="8.0" prefWidth="102.0" text="BOARED" textFill="#e1e1e1">
+            <font>
+               <Font name="ROGFontsv1.6-Regular" size="27.0" />
+            </font>
+         </Label>
+      </items></ToolBar>
+   <ToolBar id="navbar" layoutX="476.0" prefHeight="50.0" prefWidth="112.0" AnchorPane.rightAnchor="0.0">
+      <items>
+         <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="23.0" style="-fx-max-height: 23; -fx-min-height: 23; -fx-max-width: 24; -fx-min-width: 24;" text="-">
+            <font>
+               <Font name="ROGFontsv1.6-Regular" size="13.0" />
+            </font>
+         </Button>
+         <Button layoutX="10.0" layoutY="15.0" maxHeight="40.0" maxWidth="46.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="46.0" style="-fx-max-height: 23; -fx-min-height: 23; -fx-max-width: 24; -fx-min-width: 24;" text="❐">
+            <font>
+               <Font name="ROGFontsv1.6-Regular" size="10.0" />
+            </font>
+         </Button>
+         <Button layoutX="39.0" layoutY="15.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="23.0" style="-fx-max-height: 23; -fx-min-height: 23; -fx-max-width: 24; -fx-min-width: 24;" text="X">
+            <font>
+               <Font name="Agency FB Bold" size="12.0" />
+            </font>
+         </Button>
       </items></ToolBar>
 </AnchorPane>
