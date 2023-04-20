@@ -11,8 +11,6 @@ import javafx.stage.Stage;
 
 public class LoginController {
 
-    private static double initialX = 0;
-    private static double initialY = 0;
     private static double xOffset = 0;
     private static double yOffset = 0;
 
