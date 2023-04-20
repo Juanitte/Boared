@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -21,6 +22,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("login"), 400, 600);
         stage.setScene(scene);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("style.css")).toExternalForm());
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
 

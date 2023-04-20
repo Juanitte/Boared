@@ -6,36 +6,32 @@
 <?import javafx.scene.text.*?>
 <?scenebuilder-stylesheet src/main/resources/com/juanite/style.css?>
 
-<AnchorPane prefHeight="400.0" prefWidth="589.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.juanite.controller.LoginController">
-   <ToolBar id="navbar" prefHeight="50.0" prefWidth="477.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="112.0">
-      <items>
-         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@icon.png" />
-            </image>
-         </ImageView>
-         <Label fx:id="lbl_titlebar" prefHeight="8.0" prefWidth="102.0" text="BOARED" textFill="#e1e1e1">
-            <font>
-               <Font name="ROGFontsv1.6-Regular" size="27.0" />
-            </font>
-         </Label>
-      </items></ToolBar>
-   <ToolBar id="navbar" layoutX="476.0" prefHeight="50.0" prefWidth="112.0" AnchorPane.rightAnchor="0.0">
-      <items>
-         <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="23.0" style="-fx-max-height: 23; -fx-min-height: 23; -fx-max-width: 24; -fx-min-width: 24;" text="-">
-            <font>
-               <Font name="ROGFontsv1.6-Regular" size="13.0" />
-            </font>
-         </Button>
-         <Button layoutX="10.0" layoutY="15.0" maxHeight="40.0" maxWidth="46.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="46.0" style="-fx-max-height: 23; -fx-min-height: 23; -fx-max-width: 24; -fx-min-width: 24;" text="❐">
-            <font>
-               <Font name="ROGFontsv1.6-Regular" size="10.0" />
-            </font>
-         </Button>
-         <Button layoutX="39.0" layoutY="15.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="23.0" style="-fx-max-height: 23; -fx-min-height: 23; -fx-max-width: 24; -fx-min-width: 24;" text="X">
-            <font>
-               <Font name="Agency FB Bold" size="12.0" />
-            </font>
-         </Button>
-      </items></ToolBar>
+<AnchorPane prefHeight="400.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.juanite.controller.LoginController">
+   <ToolBar id="navbar" fx:id="tb_1" onMouseClicked="#tbClickValidate" onMouseDragged="#tbDragValidate" prefHeight="50.0" prefWidth="480.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="116.0">
+      <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@icon.png" />
+      </ImageView>
+      <Label fx:id="lbl_titlebar" prefHeight="39.0" prefWidth="146.0" text="BOARED" textFill="#e1e1e1">
+         <font>
+            <Font name="ROGFonts-Regular" size="27.0" />
+         </font>
+      </Label>
+   </ToolBar>
+   <ToolBar id="navbar" fx:id="tb_2" layoutX="480.0" onMouseClicked="#tbClickValidate" onMouseDragged="#tbDragValidate" prefHeight="50.0" prefWidth="117.0" AnchorPane.rightAnchor="0.0">
+      <Button fx:id="btn_minimize" mnemonicParsing="false" onMouseClicked="#btnMinimizeValidate" prefHeight="26.0" prefWidth="23.0" style="-fx-max-height: 23; -fx-min-height: 23; -fx-max-width: 24; -fx-min-width: 24; -fx-background-color: #b3b3b3;" text="-">
+         <font>
+            <Font name="ROGFontsv1.6-Regular" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_maximize" layoutX="10.0" layoutY="15.0" maxHeight="40.0" maxWidth="46.0" mnemonicParsing="false" onMouseClicked="#btnMaximizeValidate" prefHeight="40.0" prefWidth="46.0" style="-fx-max-height: 23; -fx-min-height: 23; -fx-max-width: 24; -fx-min-width: 24; -fx-background-color: #b3b3b3;" text="❐">
+         <font>
+            <Font name="ROGFontsv1.6-Regular" size="10.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_close" layoutX="39.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#btnCloseValidate" prefHeight="26.0" prefWidth="23.0" style="-fx-max-height: 23; -fx-min-height: 23; -fx-max-width: 24; -fx-min-width: 24; -fx-background-color: #b3b3b3;" text="X">
+         <font>
+            <Font name="Agency FB Bold" size="12.0" />
+         </font>
+      </Button>
+   </ToolBar>
 </AnchorPane>
