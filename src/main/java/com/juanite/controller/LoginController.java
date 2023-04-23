@@ -35,6 +35,16 @@ public class LoginController {
     public TextField txtfld_username;
     @FXML
     public PasswordField txtfld_password;
+    @FXML
+    public Button btn_login;
+    @FXML
+    public Button btn_signup;
+    @FXML
+    public Label lbl_slogan1;
+    @FXML
+    public Label lbl_slogan2;
+    @FXML
+    public Label lbl_slogan3;
 
     @FXML
     public void initialize(){
