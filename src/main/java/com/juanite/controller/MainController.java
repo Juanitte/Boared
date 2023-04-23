@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginController {
+public class MainController {
 
     private static double xOffset = 0;
     private static double yOffset = 0;
@@ -31,23 +31,31 @@ public class LoginController {
     @FXML
     public ImageView img_resize;
     @FXML
-    public Label lbl_username;
+    public Button btn_shop;
     @FXML
-    public Label lbl_password;
+    public Button btn_library;
     @FXML
-    public TextField txtfld_username;
+    public Button btn_profile;
     @FXML
-    public PasswordField txtfld_password;
+    public Button btn_friends;
     @FXML
-    public Button btn_login;
+    public ImageView img_iconBigInv;
     @FXML
-    public Button btn_signup;
+    public ImageView img_iconBig;
     @FXML
     public Label lbl_slogan1;
     @FXML
     public Label lbl_slogan2;
     @FXML
     public Label lbl_slogan3;
+    @FXML
+    public Separator separator_1;
+    @FXML
+    public Label lbl_news;
+    @FXML
+    public Separator separator_2;
+    @FXML
+    public Label lbl_newsContent1;
 
     @FXML
     public void initialize(){
@@ -104,8 +112,8 @@ public class LoginController {
     }
 
     @FXML
-    public void btnLoginValidate() throws IOException {
-        Stage stage = (Stage) btn_login.getScene().getWindow();
+    public void lblTitleValidate() throws IOException {
+        Stage stage = (Stage) lbl_news.getScene().getWindow();
         App.setRoot("main");
         stage.setWidth(800);
         stage.setHeight(600);

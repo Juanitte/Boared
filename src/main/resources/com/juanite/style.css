@@ -38,3 +38,17 @@ PasswordField{
     -fx-font-family: "ROG Fonts v1.6";
     -fx-font-size: 13;
 }
+
+#btn_shop, #btn_library, #btn_profile, #btn_friends{
+    -fx-font-family: "ROG Fonts v1.6";
+    -fx-font-size: 18;
+}
+
+#lbl_news{
+    -fx-font-size: 28;
+}
+
+#lbl_newsContent1{
+    -fx-font-family: "Agency FB";
+    -fx-font-size: 22;
+}
