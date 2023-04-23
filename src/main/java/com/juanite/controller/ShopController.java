@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MainController {
+public class ShopController {
 
     private static double xOffset = 0;
     private static double yOffset = 0;
@@ -39,23 +39,19 @@ public class MainController {
     @FXML
     public Button btn_friends;
     @FXML
-    public ImageView img_iconBigInv;
-    @FXML
-    public ImageView img_iconBig;
-    @FXML
-    public Label lbl_slogan1;
-    @FXML
-    public Label lbl_slogan2;
-    @FXML
-    public Label lbl_slogan3;
-    @FXML
     public Separator separator_1;
     @FXML
-    public Label lbl_news;
+    public Label lbl_recommended;
     @FXML
-    public Separator separator_2;
+    public ListView lv_recommended;
     @FXML
-    public Label lbl_newsContent1;
+    public Label lbl_offSale;
+    @FXML
+    public ListView lv_offSale;
+    @FXML
+    public TextField txtfld_search;
+    @FXML
+    public Button btn_search;
 
     @FXML
     public void initialize(){

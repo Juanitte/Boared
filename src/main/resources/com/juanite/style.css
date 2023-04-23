@@ -23,7 +23,7 @@ TextField{
     -fx-border-width: 2;
     -fx-border-radius: 10;
     -fx-background-radius: 10;
-    -fx-border-color: #f1f1f1;
+    -fx-border-color: #515151;
     -fx-font-family: "ROG Fonts v1.6";
     -fx-font-size: 13;
 }
@@ -34,7 +34,7 @@ PasswordField{
     -fx-border-width: 2;
     -fx-border-radius: 10;
     -fx-background-radius: 10;
-    -fx-border-color: #f1f1f1;
+    -fx-border-color: #515151;
     -fx-font-family: "ROG Fonts v1.6";
     -fx-font-size: 13;
 }
@@ -51,4 +51,12 @@ PasswordField{
 #lbl_newsContent1{
     -fx-font-family: "Agency FB";
     -fx-font-size: 22;
+}
+
+#btn_search{
+    -fx-font-size: 13;
+}
+
+ListView{
+    -fx-background-color: #414141;
 }

@@ -56,17 +56,17 @@ public class LoginController {
 
     @FXML
     public void btnCloseValidate(){
-        Stage stage = (Stage) btn_close.getScene().getWindow();
+        Stage stage = App.getStage();
         stage.close();
     }
     @FXML
     public void btnMinimizeValidate(){
-        Stage stage = (Stage) btn_minimize.getScene().getWindow();
+        Stage stage = App.getStage();
         stage.setIconified(true);
     }
     @FXML
     public void btnMaximizeValidate(){
-        Stage stage = (Stage) btn_maximize.getScene().getWindow();
+        Stage stage = App.getStage();
         if(!stage.isMaximized()) {
             stage.setMaximized(true);
         }else{
@@ -75,21 +75,21 @@ public class LoginController {
     }
    @FXML
    public void tbClickValidate(MouseEvent event) {
-       Stage stage = (Stage) tb_1.getScene().getWindow();
+       Stage stage = App.getStage();
        xOffset = stage.getX() - event.getScreenX();
        yOffset = stage.getY() - event.getScreenY();
    }
 
     @FXML
     public void tbDragValidate(MouseEvent event) {
-        Stage stage = (Stage) tb_1.getScene().getWindow();
+        Stage stage = App.getStage();
         stage.setX(event.getScreenX() + xOffset);
         stage.setY(event.getScreenY() + yOffset);
     }
 
     @FXML
     public void resizeWindow(MouseEvent event) {
-        Stage stage = (Stage) img_resize.getScene().getWindow();
+        Stage stage = App.getStage();
         double offsetX = event.getSceneX();
         double offsetY = event.getSceneY();
         double width = stage.getWidth();
@@ -105,7 +105,7 @@ public class LoginController {
 
     @FXML
     public void btnLoginValidate() throws IOException {
-        Stage stage = (Stage) btn_login.getScene().getWindow();
+        Stage stage = App.getStage();
         App.setRoot("main");
         stage.setWidth(800);
         stage.setHeight(600);
