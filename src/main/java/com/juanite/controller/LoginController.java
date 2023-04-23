@@ -1,9 +1,7 @@
 package com.juanite.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToolBar;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -29,6 +27,14 @@ public class LoginController {
     public ImageView img_icon;
     @FXML
     public ImageView img_resize;
+    @FXML
+    public Label lbl_username;
+    @FXML
+    public Label lbl_password;
+    @FXML
+    public TextField txtfld_username;
+    @FXML
+    public PasswordField txtfld_password;
 
     @FXML
     public void initialize(){

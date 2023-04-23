@@ -11,8 +11,6 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.util.Objects;
 
-import static jdk.xml.internal.SecuritySupport.getResourceAsStream;
-
 /**
  * JavaFX App
  */
@@ -24,7 +22,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         stage.getIcons().add(new Image(Objects.requireNonNull(App.class.getResourceAsStream("icon.png"))));
         stage.setTitle("BOARED - Log in");
-        scene = new Scene(loadFXML("login"), 350, 550);
+        scene = new Scene(loadFXML("login"), 350, 400);
         stage.setScene(scene);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("style.css")).toExternalForm());
         stage.initStyle(StageStyle.UNDECORATED);
