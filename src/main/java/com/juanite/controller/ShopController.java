@@ -111,6 +111,7 @@ public class ShopController {
     public void lblTitleValidate() throws IOException {
         Stage stage = App.getStage();
         App.setRoot("main");
+        stage.setTitle("BOARED - MAIN");
         stage.setWidth(800);
         stage.setHeight(600);
     }
@@ -119,6 +120,7 @@ public class ShopController {
     public void btnShopValidate() throws IOException {
         Stage stage = App.getStage();
         App.setRoot("shop");
+        stage.setTitle("BOARED - SHOP");
         stage.setWidth(800);
         stage.setHeight(600);
     }
