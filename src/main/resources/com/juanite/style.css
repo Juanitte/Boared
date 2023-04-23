@@ -8,3 +8,7 @@ ToolBar{
 AnchorPane{
     -fx-background-color: #565656;
 }
+
+Label{
+    -fx-font-family: "ROG Fonts v1.6";
+}

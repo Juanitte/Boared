@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?scenebuilder-stylesheet src/main/resources/com/juanite/style.css?>
 
-<AnchorPane prefHeight="400.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.juanite.controller.LoginController">
-   <ToolBar id="navbar" fx:id="tb_1" onMouseClicked="#tbClickValidate" onMouseDragged="#tbDragValidate" prefHeight="50.0" prefWidth="480.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="116.0">
-      <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+<AnchorPane prefHeight="550.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.juanite.controller.LoginController">
+   <ToolBar id="navbar" fx:id="tb_1" onMouseClicked="#tbClickValidate" onMouseDragged="#tbDragValidate" prefHeight="50.0" prefWidth="480.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="112.0">
+      <ImageView fx:id="img_icon" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@icon.png" />
       </ImageView>
       <Label fx:id="lbl_titlebar" prefHeight="39.0" prefWidth="146.0" text="BOARED" textFill="#e1e1e1">
@@ -17,7 +18,7 @@
          </font>
       </Label>
    </ToolBar>
-   <ToolBar id="navbar" fx:id="tb_2" layoutX="480.0" onMouseClicked="#tbClickValidate" onMouseDragged="#tbDragValidate" prefHeight="50.0" prefWidth="117.0" AnchorPane.rightAnchor="0.0">
+   <ToolBar id="navbar" fx:id="tb_2" layoutX="471.0" onMouseClicked="#tbClickValidate" onMouseDragged="#tbDragValidate" prefHeight="50.0" prefWidth="113.0" AnchorPane.rightAnchor="0.0">
       <Button fx:id="btn_minimize" mnemonicParsing="false" onMouseClicked="#btnMinimizeValidate" prefHeight="26.0" prefWidth="23.0" style="-fx-max-height: 23; -fx-min-height: 23; -fx-max-width: 24; -fx-min-width: 24; -fx-background-color: #b3b3b3;" text="-">
          <font>
             <Font name="ROGFontsv1.6-Regular" size="13.0" />
@@ -34,5 +35,10 @@
          </font>
       </Button>
    </ToolBar>
-   <Label layoutX="477.0" layoutY="316.0" text="Label" />
+   <ImageView fx:id="img_resize" fitHeight="32.0" fitWidth="32.0" layoutX="552.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <cursor>
+         <Cursor fx:constant="SE_RESIZE" />
+      </cursor>
+      <Image url="@resize.png" />
+   </ImageView>
 </AnchorPane>
