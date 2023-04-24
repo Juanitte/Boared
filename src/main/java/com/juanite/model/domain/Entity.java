@@ -18,17 +18,4 @@ public abstract class Entity {
     public abstract void setGames(Set<Game> games);
     public abstract Countries getCountry();
     public abstract void setCountry(Countries country);
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Entity entity = (Entity) o;
-        return Objects.equals(name, entity.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
-    }
 }

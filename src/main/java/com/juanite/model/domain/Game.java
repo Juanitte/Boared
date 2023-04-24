@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class Game {
 
-    private String name;
+    private String title;
     private String description;
     private Set<Genres> genres;
     private int releaseYear;
@@ -16,7 +16,7 @@ public class Game {
     private Developer developer;
 
     public Game() {
-        this.name = "";
+        this.title = "";
         this.description = "";
         this.genres = new HashSet<Genres>();
         this.releaseYear = 0;
@@ -26,8 +26,8 @@ public class Game {
         this.developer = null;
     }
 
-    public Game(String name, String description, Set<Genres> genres, int releaseYear, double price, String logo, Developer developer) {
-        this.name = name;
+    public Game(String title, String description, Set<Genres> genres, int releaseYear, double price, String logo, Developer developer) {
+        this.title = title;
         this.description = description;
         this.genres = genres;
         this.releaseYear = releaseYear;
@@ -36,8 +36,8 @@ public class Game {
         this.developer = developer;
     }
 
-    public Game(String name, String description, Set<Genres> genres, int releaseYear, double price, String logo, Set<String> images, Developer developer) {
-        this.name = name;
+    public Game(String title, String description, Set<Genres> genres, int releaseYear, double price, String logo, Set<String> images, Developer developer) {
+        this.title = title;
         this.description = description;
         this.genres = genres;
         this.releaseYear = releaseYear;
@@ -47,12 +47,12 @@ public class Game {
         this.developer = developer;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -116,11 +116,11 @@ public class Game {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Game game = (Game) o;
-        return Objects.equals(name, game.name);
+        return Objects.equals(title, game.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(title);
     }
 }

@@ -1,6 +1,7 @@
 package com.juanite.model.domain;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class User extends Entity{
@@ -182,5 +183,18 @@ public class User extends Entity{
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(email, user.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(email);
     }
 }
