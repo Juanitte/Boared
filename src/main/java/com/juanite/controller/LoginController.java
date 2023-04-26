@@ -106,9 +106,9 @@ public class LoginController {
     @FXML
     public void btnLoginValidate() throws IOException {
         Stage stage = App.getStage();
-        App.setRoot("main");
-        stage.setTitle("BOARED - Main");
         stage.setWidth(800);
         stage.setHeight(600);
+        App.setRoot("main");
+        stage.setTitle("BOARED - Main");
     }
 }

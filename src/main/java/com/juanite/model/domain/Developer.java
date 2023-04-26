@@ -1,10 +1,12 @@
 package com.juanite.model.domain;
 
+import com.juanite.interfaces.iDeveloper;
+
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class Developer extends Entity{
+public class Developer extends Entity implements iDeveloper {
     private String description;
     private String logo;
 

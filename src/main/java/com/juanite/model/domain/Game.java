@@ -1,10 +1,10 @@
 package com.juanite.model.domain;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import com.juanite.interfaces.iGame;
 
-public class Game {
+import java.util.*;
+
+public class Game implements iGame {
 
     private String title;
     private String description;
@@ -12,31 +12,19 @@ public class Game {
     private int releaseYear;
     private double price;
     private String logo;
-    private Set<String> images;
+    private double score;
+    private List<String> images;
     private Developer developer;
 
     public Game() {
-        this.title = "";
-        this.description = "";
-        this.genres = new HashSet<Genres>();
-        this.releaseYear = 0;
-        this.price = 0;
-        this.logo = "";
-        this.images = new HashSet<String>();
-        this.developer = null;
+        this("", "", new HashSet<Genres>(), 0, 0, "", 0, new ArrayList<String>(), null);
     }
 
     public Game(String title, String description, Set<Genres> genres, int releaseYear, double price, String logo, Developer developer) {
-        this.title = title;
-        this.description = description;
-        this.genres = genres;
-        this.releaseYear = releaseYear;
-        this.price = price;
-        this.logo = logo;
-        this.developer = developer;
+        this(title, description, genres, releaseYear, price, logo, 0, new ArrayList<String>(), developer);
     }
 
-    public Game(String title, String description, Set<Genres> genres, int releaseYear, double price, String logo, Set<String> images, Developer developer) {
+    public Game(String title, String description, Set<Genres> genres, int releaseYear, double price, String logo, double score, List<String> images, Developer developer) {
         this.title = title;
         this.description = description;
         this.genres = genres;
@@ -95,11 +83,19 @@ public class Game {
         this.logo = logo;
     }
 
-    public Set<String> getImages() {
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    public List<String> getImages() {
         return images;
     }
 
-    public void setImages(Set<String> images) {
+    public void setImages(List<String> images) {
         this.images = images;
     }
 

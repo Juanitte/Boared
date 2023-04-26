@@ -1,9 +1,10 @@
 package com.juanite.model.domain;
 
-import java.util.Objects;
+import com.juanite.interfaces.iEntity;
+
 import java.util.Set;
 
-public abstract class Entity {
+public abstract class Entity implements iEntity {
 
     protected String name;
     protected String birthDate;

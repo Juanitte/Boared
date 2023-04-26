@@ -1,6 +1,7 @@
 package com.juanite.controller;
 
 import com.juanite.App;
+import com.juanite.model.domain.Game;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -43,15 +44,17 @@ public class ShopController {
     @FXML
     public Label lbl_recommended;
     @FXML
-    public ListView lv_recommended;
+    public ListView<Game> lv_recommended;
     @FXML
     public Label lbl_offSale;
     @FXML
-    public ListView lv_offSale;
+    public ListView<Game> lv_offSale;
     @FXML
     public TextField txtfld_search;
     @FXML
     public Button btn_search;
+    @FXML
+    public Button btn_logout;
 
     @FXML
     public void initialize(){
@@ -104,24 +107,45 @@ public class ShopController {
             double newHeight = height + (e.getSceneY() - offsetY);
             stage.setWidth(newWidth);
             stage.setHeight(newHeight);
+            MainController.setWidth(newWidth);
+            MainController.setHeight(newHeight);
         });
     }
 
     @FXML
     public void lblTitleValidate() throws IOException {
         Stage stage = App.getStage();
+        boolean maximize = stage.isMaximized();
         App.setRoot("main");
-        stage.setTitle("BOARED - MAIN");
-        stage.setWidth(800);
-        stage.setHeight(600);
+        stage.setTitle("BOARED - Main");
+        if(maximize){
+            stage.setMaximized(true);
+        }else {
+            stage.setWidth(MainController.getWidth());
+            stage.setHeight(MainController.getHeight());
+        }
     }
 
     @FXML
     public void btnShopValidate() throws IOException {
         Stage stage = App.getStage();
+        boolean maximize = stage.isMaximized();
         App.setRoot("shop");
-        stage.setTitle("BOARED - SHOP");
-        stage.setWidth(800);
-        stage.setHeight(600);
+        stage.setTitle("BOARED - Shop");
+        if(maximize){
+            stage.setMaximized(true);
+        }else {
+            stage.setWidth(MainController.getWidth());
+            stage.setHeight(MainController.getHeight());
+        }
+    }
+
+    @FXML
+    public void btnLogoutValidate() throws IOException {
+        Stage stage = App.getStage();
+        App.setRoot("login");
+        stage.setTitle("BOARED - Log in");
+        stage.setWidth(350);
+        stage.setHeight(400);
     }
 }

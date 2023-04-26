@@ -1,10 +1,12 @@
 package com.juanite.model.domain;
 
+import com.juanite.interfaces.iUser;
+
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class User extends Entity{
+public class User extends Entity implements iUser {
     private String username;
     private String password;
     private String surname;

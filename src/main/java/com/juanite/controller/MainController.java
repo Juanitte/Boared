@@ -13,6 +13,21 @@ public class MainController {
 
     private static double xOffset = 0;
     private static double yOffset = 0;
+    private static double width = 800;
+    private static double height = 600;
+
+    public static double getWidth(){
+        return MainController.width;
+    }
+    public static void setWidth(double width){
+        MainController.width = width;
+    }
+    public static double getHeight(){
+        return MainController.height;
+    }
+    public static void setHeight(double height){
+        MainController.height = height;
+    }
 
     @FXML
     public Label lbl_titlebar;
@@ -56,10 +71,14 @@ public class MainController {
     public Separator separator_2;
     @FXML
     public Label lbl_newsContent1;
+    @FXML
+    public Button btn_logout;
 
     @FXML
     public void initialize(){
         img_resize.setOnMousePressed(this::resizeWindow);
+        width = App.getStage().getWidth();
+        height = App.getStage().getHeight();
     }
 
     @FXML
@@ -75,11 +94,7 @@ public class MainController {
     @FXML
     public void btnMaximizeValidate(){
         Stage stage = App.getStage();
-        if(!stage.isMaximized()) {
-            stage.setMaximized(true);
-        }else{
-            stage.setMaximized(false);
-        }
+        stage.setMaximized(!stage.isMaximized());
     }
    @FXML
    public void tbClickValidate(MouseEvent event) {
@@ -108,24 +123,45 @@ public class MainController {
             double newHeight = height + (e.getSceneY() - offsetY);
             stage.setWidth(newWidth);
             stage.setHeight(newHeight);
+            MainController.width = newWidth;
+            MainController.height = newHeight;
         });
     }
 
     @FXML
     public void lblTitleValidate() throws IOException {
         Stage stage = App.getStage();
+        boolean maximize = stage.isMaximized();
         App.setRoot("main");
-        stage.setTitle("BOARED - MAIN");
-        stage.setWidth(800);
-        stage.setHeight(600);
+        stage.setTitle("BOARED - Main");
+        if(maximize){
+            stage.setMaximized(true);
+        }else {
+            stage.setWidth(MainController.width);
+            stage.setHeight(MainController.height);
+        }
     }
 
     @FXML
     public void btnShopValidate() throws IOException {
         Stage stage = App.getStage();
+        boolean maximize = stage.isMaximized();
         App.setRoot("shop");
         stage.setTitle("BOARED - Shop");
-        stage.setWidth(800);
-        stage.setHeight(600);
+        if(maximize){
+            stage.setMaximized(true);
+        }else {
+            stage.setWidth(MainController.width);
+            stage.setHeight(MainController.height);
+        }
+    }
+
+    @FXML
+    public void btnLogoutValidate() throws IOException {
+        Stage stage = App.getStage();
+        App.setRoot("login");
+        stage.setTitle("BOARED - Log in");
+        stage.setWidth(350);
+        stage.setHeight(400);
     }
 }
