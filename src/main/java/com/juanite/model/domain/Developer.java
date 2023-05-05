@@ -1,24 +1,29 @@
 package com.juanite.model.domain;
 
-import com.juanite.interfaces.iDeveloper;
+import com.juanite.model.domain.interfaces.iDeveloper;
+import com.juanite.model.DAO.DeveloperDAO;
+import com.juanite.util.AppData;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class Developer extends Entity implements iDeveloper {
+public class Developer extends Entity implements iDeveloper, Observable {
     private String description;
     private String logo;
 
     public Developer() {
         this.name = "";
         this.description = "";
-        this.country = null;
-        this.birthDate = "";
+        this.country = Countries.NONE;
+        this.birthDate = null;
         this.logo = "";
         this.games = new HashSet<Game>();
     }
-    public Developer(String name, String description, Countries country , String birthdate, String logo) {
+    public Developer(String name, String description, Countries country , Date birthdate, String logo) {
         this.name = name;
         this.description = description;
         this.country = country;
@@ -26,7 +31,7 @@ public class Developer extends Entity implements iDeveloper {
         this.logo = logo;
         this.games = new HashSet<Game>();
     }
-    public Developer(String name, String description, Countries country , String birthdate, String logo, HashSet<Game> games) {
+    public Developer(String name, String description, Countries country , Date birthdate, String logo, HashSet<Game> games) {
         this.name = name;
         this.description = description;
         this.country = country;
@@ -46,12 +51,12 @@ public class Developer extends Entity implements iDeveloper {
     }
 
     @Override
-    public String getBirthDate() {
+    public Date getBirthDate() {
         return this.birthDate;
     }
 
     @Override
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -102,5 +107,63 @@ public class Developer extends Entity implements iDeveloper {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+
+
+    @Override
+    public Developer create() throws Exception {
+        try (DeveloperDAO ddao = new DeveloperDAO()) {
+            ddao.save(this);
+        }
+        return this;
+    }
+
+    @Override
+    public Developer update(Developer developer) throws Exception {
+        try (DeveloperDAO ddao = new DeveloperDAO()) {
+            if(ddao.find(developer.getName()) != null){
+                ddao.save(developer);
+            }else{
+                ddao.save(developer, this.getName());
+            }
+        }
+
+        return developer;
+    }
+
+    @Override
+    public void remove() throws Exception {
+        try (DeveloperDAO ddao = new DeveloperDAO()) {
+            if(!ddao.hasGames(this)){
+                ddao.delete(this);
+                AppData.setDeveloper(null);
+            }
+        }
+    }
+
+    @Override
+    public boolean addGame(Game game) {
+        return this.games.add(game);
+    }
+
+    @Override
+    public boolean removeGame(Game game) {
+        return this.games.remove(game);
+    }
+
+    @Override
+    public void addListener(InvalidationListener invalidationListener) {
+
+    }
+
+    @Override
+    public void removeListener(InvalidationListener invalidationListener) {
+
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

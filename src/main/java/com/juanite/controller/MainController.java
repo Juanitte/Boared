@@ -1,11 +1,15 @@
 package com.juanite.controller;
 
 import com.juanite.App;
+import com.juanite.util.AppData;
+import com.juanite.util.Utils;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
+import javafx.scene.control.ToolBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -13,21 +17,6 @@ public class MainController {
 
     private static double xOffset = 0;
     private static double yOffset = 0;
-    private static double width = 800;
-    private static double height = 600;
-
-    public static double getWidth(){
-        return MainController.width;
-    }
-    public static void setWidth(double width){
-        MainController.width = width;
-    }
-    public static double getHeight(){
-        return MainController.height;
-    }
-    public static void setHeight(double height){
-        MainController.height = height;
-    }
 
     @FXML
     public Label lbl_titlebar;
@@ -46,13 +35,11 @@ public class MainController {
     @FXML
     public ImageView img_resize;
     @FXML
-    public Button btn_shop;
+    public Button btn_games;
     @FXML
-    public Button btn_library;
+    public Button btn_users;
     @FXML
     public Button btn_profile;
-    @FXML
-    public Button btn_friends;
     @FXML
     public ImageView img_iconBigInv;
     @FXML
@@ -73,95 +60,99 @@ public class MainController {
     public Label lbl_newsContent1;
     @FXML
     public Button btn_logout;
+    @FXML
+    public Button btn_devs;
 
     @FXML
     public void initialize(){
         img_resize.setOnMousePressed(this::resizeWindow);
-        width = App.getStage().getWidth();
-        height = App.getStage().getHeight();
+        AppData.setWidth(App.getStage().getWidth());
+        AppData.setHeight(App.getStage().getHeight());
+        btn_profile.setText(AppData.getLoggedUser().getName());
     }
 
     @FXML
     public void btnCloseValidate(){
-        Stage stage = App.getStage();
-        stage.close();
+        AppData.getStage().close();
     }
     @FXML
     public void btnMinimizeValidate(){
-        Stage stage = App.getStage();
-        stage.setIconified(true);
+        AppData.getStage().setIconified(true);
     }
     @FXML
     public void btnMaximizeValidate(){
-        Stage stage = App.getStage();
-        stage.setMaximized(!stage.isMaximized());
+        AppData.getStage().setMaximized(!AppData.getStage().isMaximized());
     }
-   @FXML
-   public void tbClickValidate(MouseEvent event) {
-       Stage stage = App.getStage();
-       xOffset = stage.getX() - event.getScreenX();
-       yOffset = stage.getY() - event.getScreenY();
-   }
+    @FXML
+    public void tbClickValidate(MouseEvent event) {
+        xOffset = AppData.getStage().getX() - event.getScreenX();
+        yOffset = AppData.getStage().getY() - event.getScreenY();
+    }
 
     @FXML
     public void tbDragValidate(MouseEvent event) {
-        Stage stage = App.getStage();
-        stage.setX(event.getScreenX() + xOffset);
-        stage.setY(event.getScreenY() + yOffset);
+        AppData.getStage().setX(event.getScreenX() + xOffset);
+        AppData.getStage().setY(event.getScreenY() + yOffset);
     }
 
     @FXML
     public void resizeWindow(MouseEvent event) {
-        Stage stage = App.getStage();
         double offsetX = event.getSceneX();
         double offsetY = event.getSceneY();
-        double width = stage.getWidth();
-        double height = stage.getHeight();
+        double width = AppData.getStage().getWidth();
+        double height = AppData.getStage().getHeight();
 
         img_resize.setOnMouseDragged(e -> {
             double newWidth = width + (e.getSceneX() - offsetX);
             double newHeight = height + (e.getSceneY() - offsetY);
-            stage.setWidth(newWidth);
-            stage.setHeight(newHeight);
-            MainController.width = newWidth;
-            MainController.height = newHeight;
+            AppData.getStage().setWidth(newWidth);
+            AppData.getStage().setHeight(newHeight);
+            AppData.setWidth(newWidth);
+            AppData.setHeight(newHeight);
         });
     }
 
     @FXML
     public void lblTitleValidate() throws IOException {
-        Stage stage = App.getStage();
-        boolean maximize = stage.isMaximized();
-        App.setRoot("main");
-        stage.setTitle("BOARED - Main");
-        if(maximize){
-            stage.setMaximized(true);
-        }else {
-            stage.setWidth(MainController.width);
-            stage.setHeight(MainController.height);
-        }
+        AppData.setPreviousScene("main");
+        AppData.getStage().setTitle("BOARED - Main");
+        Utils.switchToScreen("main");
     }
 
     @FXML
-    public void btnShopValidate() throws IOException {
-        Stage stage = App.getStage();
-        boolean maximize = stage.isMaximized();
-        App.setRoot("shop");
-        stage.setTitle("BOARED - Shop");
-        if(maximize){
-            stage.setMaximized(true);
-        }else {
-            stage.setWidth(MainController.width);
-            stage.setHeight(MainController.height);
-        }
+    public void btnGamesValidate() throws IOException {
+        AppData.setPreviousScene("main");
+        AppData.getStage().setTitle("BOARED - Games");
+        Utils.switchToScreen("games");
+    }
+
+    @FXML
+    public void btnUsersValidate() throws IOException {
+        AppData.setPreviousScene("main");
+        AppData.getStage().setTitle("BOARED - Users");
+        Utils.switchToScreen("users");
     }
 
     @FXML
     public void btnLogoutValidate() throws IOException {
-        Stage stage = App.getStage();
+        AppData.setPreviousScene("main");
         App.setRoot("login");
-        stage.setTitle("BOARED - Log in");
-        stage.setWidth(350);
-        stage.setHeight(400);
+        AppData.getStage().setTitle("BOARED - Log in");
+        AppData.getStage().setWidth(350);
+        AppData.getStage().setHeight(400);
+    }
+
+    @FXML
+    public void btnDevsValidate() throws IOException {
+        AppData.setPreviousScene("main");
+        AppData.getStage().setTitle("BOARED - Devs");
+        Utils.switchToScreen("devs");
+    }
+
+    @FXML
+    public void btnProfileValidate() throws IOException {
+        AppData.setPreviousScene("main");
+        AppData.getStage().setTitle("BOARED - " + AppData.getLoggedUser().getName());
+        Utils.switchToScreen("profile");
     }
 }
