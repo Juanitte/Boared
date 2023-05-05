@@ -1,19 +1,19 @@
 package com.juanite.controller;
 
 import com.juanite.App;
+import com.juanite.model.DAO.GameDAO;
+import com.juanite.model.DTO.GameDTO;
+import com.juanite.model.domain.Game;
 import com.juanite.util.AppData;
 import com.juanite.util.Utils;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
-import javafx.scene.control.ToolBar;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
-public class MainController {
+public class ShopController {
 
     private static double xOffset = 0;
     private static double yOffset = 0;
@@ -37,24 +37,6 @@ public class MainController {
     @FXML
     public Button btn_profile;
     @FXML
-    public ImageView img_iconBigInv;
-    @FXML
-    public ImageView img_iconBig;
-    @FXML
-    public Label lbl_slogan1;
-    @FXML
-    public Label lbl_slogan2;
-    @FXML
-    public Label lbl_slogan3;
-    @FXML
-    public Separator separator_1;
-    @FXML
-    public Label lbl_news;
-    @FXML
-    public Separator separator_2;
-    @FXML
-    public Label lbl_newsContent1;
-    @FXML
     public Button btn_logout;
     @FXML
     public Button btn_shop;
@@ -62,6 +44,48 @@ public class MainController {
     public Button btn_library;
     @FXML
     public Button btn_friends;
+    @FXML
+    public Button btn_search;
+    @FXML
+    public Label lbl_suggestions;
+    @FXML
+    public Label lbl_new;
+    @FXML
+    public TextField txtfld_search;
+    @FXML
+    public ContextMenu cm_searchSuggestions;
+    @FXML
+    public MenuItem mi_1;
+    @FXML
+    public MenuItem mi_2;
+    @FXML
+    public MenuItem mi_3;
+    @FXML
+    public MenuItem mi_4;
+    @FXML
+    public TableView<GameDTO> tv_suggestions;
+    @FXML
+    public TableColumn<GameDTO,ImageView> tc_suggestionsLogo;
+    @FXML
+    public TableColumn<GameDTO,String> tc_suggestionsTitle;
+    @FXML
+    public TableColumn<GameDTO,String> tc_suggestionsTags;
+    @FXML
+    public TableColumn<GameDTO,String> tc_suggestionsDeveloper;
+    @FXML
+    public TableColumn<GameDTO,Double> tc_suggestionsPrice;
+    @FXML
+    public TableView<GameDTO> tv_new;
+    @FXML
+    public TableColumn<GameDTO,ImageView> tc_newLogo;
+    @FXML
+    public TableColumn<GameDTO,String> tc_newTitle;
+    @FXML
+    public TableColumn<GameDTO,String> tc_newTags;
+    @FXML
+    public TableColumn<GameDTO,String> tc_newDeveloper;
+    @FXML
+    public TableColumn<GameDTO,Double> tc_newPrice;
 
     @FXML
     public void initialize(){
@@ -114,14 +138,14 @@ public class MainController {
 
     @FXML
     public void lblTitleValidate() throws IOException {
-        AppData.setPreviousScene("main");
+        AppData.setPreviousScene("shop");
         AppData.getStage().setTitle("BOARED - Main");
         Utils.switchToScreen("main");
     }
 
     @FXML
     public void btnLogoutValidate() throws IOException {
-        AppData.setPreviousScene("main");
+        AppData.setPreviousScene("shop");
         App.setRoot("login");
         AppData.getStage().setTitle("BOARED - Log in");
         AppData.getStage().setWidth(350);
@@ -130,29 +154,44 @@ public class MainController {
 
     @FXML
     public void btnProfileValidate() throws IOException {
-        AppData.setPreviousScene("main");
+        AppData.setPreviousScene("shop");
         AppData.getStage().setTitle("BOARED - " + AppData.getLoggedUser().getName());
         Utils.switchToScreen("profile");
     }
 
     @FXML
     public void btnShopValidate() throws IOException {
-        AppData.setPreviousScene("main");
+        AppData.setPreviousScene("shop");
         AppData.getStage().setTitle("BOARED - Shop");
         Utils.switchToScreen("shop");
     }
 
     @FXML
     public void btnLibraryValidate() throws IOException {
-        AppData.setPreviousScene("main");
+        AppData.setPreviousScene("shop");
         AppData.getStage().setTitle("BOARED - Library");
         Utils.switchToScreen("library");
     }
 
     @FXML
     public void btnFriendsValidate() throws IOException {
-        AppData.setPreviousScene("main");
+        AppData.setPreviousScene("shop");
         AppData.getStage().setTitle("BOARED - Friends");
         Utils.switchToScreen("friends");
+    }
+
+    @FXML
+    public void btnSearchValidate() throws Exception {
+        if(!txtfld_search.getText().equals("")) {
+            AppData.setPreviousScene("games");
+            try (GameDAO gdao = new GameDAO()) {
+                AppData.setGames(gdao.findContainingTitles(txtfld_search.getText()));
+            }
+        }
+    }
+
+    @FXML
+    public void menuItemValidate(){
+
     }
 }

@@ -176,10 +176,10 @@ public class SignupController {
                                                             && txtfld_email.getText().length() <= 50 && txtfld_name.getText().length() <= 50
                                                             && txtfld_surname.getText().length() <= 50 && txtfld_town.getText().length() <= 100
                                                             && txtfld_address.getText().length() <= 100 && txtfld_phoneNumber.getText().length() <= 50) {
-                                                        AppData.setUser(new User(txtfld_username.getText(), txtfld_password.getText(), txtfld_email.getText(),
+                                                        AppData.setLoggedUser(new User(txtfld_username.getText(), txtfld_password.getText(), txtfld_email.getText(),
                                                                 txtfld_name.getText(), txtfld_surname.getText(), Utils.convertDate(dp_birthDate.getValue().toString()),
                                                                 cb_country.getValue(), txtfld_town.getText(), txtfld_address.getText(), txtfld_phoneNumber.getText()));
-                                                        AppData.getUser().create();
+                                                        AppData.getLoggedUser().create();
                                                         lblTitleValidate();
                                                     } else {
                                                         Utils.switchToErrorScreen("Too much text.");

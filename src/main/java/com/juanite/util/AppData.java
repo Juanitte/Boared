@@ -15,20 +15,71 @@ import javafx.stage.Stage;
 
 public class AppData {
 
+    /**
+     * width , the window's actual Width.
+     */
     private static double width = 600;
+
+    /**
+     * height , the window's actual Height.
+     */
     private static double height = 800;
+
+    /**
+     * errorMsg , the error message to be displayed when switching to error screen.
+     */
     private static String errorMsg;
+
+    /**
+     * confirmationType , an identification String that tells the confirmation window what to do.
+     */
     private static String confirmationType;
+
+    /**
+     * previousScene , an identification String that tells the app which one was the last window visited.
+     */
     private static String previousScene;
+
+    /**
+     * stage , the actual app's Stage.
+     */
     private static Stage stage = App.getStage();
+
+    /**
+     * pa , an instance from the PasswordAuthentication class. Used to hash and authenticate passwords.
+     */
     private static PasswordAuthentication pa = new PasswordAuthentication();
+
+    /**
+     * loggedUser , the Logged User. Used for authentication purposes too.
+     */
     private static User loggedUser;
+
+    /**
+     * games , the List of Games to be displayed at the TableView.
+     * game , the selected Game to work with.
+     */
     private static ObservableList<GameDTO> games = FXCollections.observableArrayList();
     private static Game game;
+
+    /**
+     * developers , the List of Developers to be displayed at the TableView.
+     * developer , the selected Developer to work with.
+     */
     private static ObservableList<DeveloperDTO> developers = FXCollections.observableArrayList();
     private static Developer developer;
+
+    /**
+     * users , the List of Users to be displayed at the TableView.
+     * user , the selected User to work with.
+     */
     private static ObservableList<UserDTO> users = FXCollections.observableArrayList();
     private static User user;
+
+    /**
+     * reviews , the List of Reviews to be displayed at the TableView.
+     * review , the selected Review to work with.
+     */
     private static ObservableList<ReviewDTO> reviews = FXCollections.observableArrayList();
     private static Review review;
 

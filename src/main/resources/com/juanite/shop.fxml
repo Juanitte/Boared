@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 <?scenebuilder-stylesheet src/main/resources/com/juanite/style.css?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.juanite.controller.MainController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.juanite.controller.ShopController">
     <ToolBar id="navbar" fx:id="tb_1" onMouseClicked="#tbClickValidate" onMouseDragged="#tbDragValidate" prefHeight="58.0" prefWidth="688.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="112.0">
         <ImageView fx:id="img_icon" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#lblTitleValidate" pickOnBounds="true" preserveRatio="true">
             <Image url="@icon.png" />
@@ -83,37 +83,53 @@
         </cursor>
         <Image url="@resize.png" />
     </ImageView>
-    <ImageView fx:id="img_iconBigInv" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0">
-        <Image url="@icon_big_left.png" />
-    </ImageView>
-    <ImageView fx:id="img_iconBig" fitHeight="150.0" fitWidth="200.0" layoutX="634.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0">
-        <Image url="@icon_big_right.png" />
-    </ImageView>
-    <Label fx:id="lbl_slogan1" alignment="CENTER" layoutX="204.0" layoutY="74.0" prefHeight="17.0" prefWidth="392.0" text="IF YOU ARE BORED," textFill="#c1c1c1" AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="204.0">
-        <font>
-            <Font size="27.0" />
-        </font>
-    </Label>
-    <Label fx:id="lbl_slogan2" alignment="CENTER" layoutX="204.0" layoutY="103.0" prefHeight="27.0" prefWidth="392.0" text="JUMP ONBOARD" textFill="#c1c1c1" AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="204.0">
-        <font>
-            <Font size="27.0" />
-        </font>
-    </Label>
-    <Label fx:id="lbl_slogan3" alignment="CENTER" layoutX="204.0" layoutY="133.0" prefHeight="27.0" prefWidth="392.0" text="AND USE BOARED." textFill="#c1c1c1" AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="204.0">
-        <font>
-            <Font size="27.0" />
-        </font>
-    </Label>
-    <Separator fx:id="separator_1" layoutX="20.0" layoutY="207.0" prefWidth="760.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
-    <Label fx:id="lbl_news" alignment="CENTER" layoutX="89.0" layoutY="249.0" prefHeight="35.0" prefWidth="84.0" text="NEWS" textFill="#c1c1c1" AnchorPane.leftAnchor="89.0">
-        <font>
-            <Font size="24.0" />
-        </font>
-    </Label>
-    <Separator fx:id="separator_2" layoutX="20.0" layoutY="283.0" prefWidth="760.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" />
-    <Label fx:id="lbl_newsContent1" layoutX="99.0" layoutY="307.0" prefHeight="27.0" prefWidth="612.0" text="BOARED v1.0.a just released! We hope to see your feedback!" textFill="#c1c1c1" AnchorPane.leftAnchor="99.0">
-        <font>
-            <Font size="18.0" />
-        </font>
-    </Label>
+   <TableView fx:id="tv_suggestions" layoutX="34.0" layoutY="121.0" prefHeight="198.0" prefWidth="730.0" AnchorPane.leftAnchor="34.0">
+     <columns>
+       <TableColumn fx:id="tc_suggestionsLogo" prefWidth="93.0" text="LOGO" />
+       <TableColumn fx:id="tc_suggestionsTitle" prefWidth="172.0" text="TITLE" />
+         <TableColumn fx:id="tc_suggestionsTags" prefWidth="259.0" text="TAGS" />
+         <TableColumn fx:id="tc_suggestionsDeveloper" prefWidth="140.0" text="DEVELOPER" />
+         <TableColumn fx:id="tc_suggestionsPrice" prefWidth="65.0" text="PRICE" />
+     </columns>
+   </TableView>
+   <TableView fx:id="tv_new" layoutX="35.0" layoutY="370.0" prefHeight="198.0" prefWidth="730.0" AnchorPane.leftAnchor="34.0">
+      <columns>
+         <TableColumn fx:id="tc_newLogo" prefWidth="93.0" text="LOGO" />
+         <TableColumn fx:id="tc_newTitle" prefWidth="172.0" text="TITLE" />
+         <TableColumn fx:id="tc_newTags" prefWidth="259.0" text="TAGS" />
+         <TableColumn fx:id="tc_newDeveloper" prefWidth="140.0" text="DEVELOPER" />
+         <TableColumn fx:id="tc_newPrice" prefWidth="65.0" text="PRICE" />
+      </columns>
+   </TableView>
+   <Label fx:id="lbl_suggestions" layoutX="35.0" layoutY="65.0" onMouseClicked="#lblTitleValidate" prefHeight="39.0" prefWidth="298.0" text="SUGGESTIONS" textFill="#e1e1e1" AnchorPane.leftAnchor="34.0">
+      <font>
+         <Font name="ROGFonts-Regular" size="27.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Label>
+   <Label fx:id="lbl_new" layoutX="35.0" layoutY="319.0" onMouseClicked="#lblTitleValidate" prefHeight="39.0" prefWidth="146.0" text="NEW" textFill="#e1e1e1" AnchorPane.leftAnchor="34.0">
+      <font>
+         <Font name="ROGFonts-Regular" size="27.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Label>
+   <TextField fx:id="txtfld_search" layoutX="560.0" layoutY="72.0" prefHeight="25.0" prefWidth="203.0">
+      <contextMenu>
+         <ContextMenu fx:id="cm_searchSuggestions">
+           <items>
+             <MenuItem fx:id="mi_1" mnemonicParsing="false" onAction="#menuItemValidate" text="Unspecified Action" />
+               <MenuItem fx:id="mi_2" mnemonicParsing="false" onAction="#menuItemValidate" text="Unspecified Action" />
+               <MenuItem fx:id="mi_3" mnemonicParsing="false" onAction="#menuItemValidate" text="Unspecified Action" />
+               <MenuItem fx:id="mi_4" mnemonicParsing="false" onAction="#menuItemValidate" text="Unspecified Action" />
+           </items>
+         </ContextMenu>
+      </contextMenu></TextField>
+    <Button fx:id="btn_search" alignment="CENTER" layoutX="484.0" layoutY="71.0" mnemonicParsing="false" onMouseClicked="#btnSearchValidate" style="-fx-background-color: #414141; -fx-background-radius: 7; -fx-border-style: solid; -fx-border-radius: 7; -fx-border-color: #515151;" text="SEARCH" textFill="#c1c1c1" AnchorPane.rightAnchor="254.0">
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor></Button>
 </AnchorPane>
