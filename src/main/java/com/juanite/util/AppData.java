@@ -63,6 +63,22 @@ public class AppData {
     private static Game game;
 
     /**
+     * recommendedGames , the List of Games to be displayed at the TableView.
+     */
+    private static ObservableList<GameDTO> recommendedGames = FXCollections.observableArrayList();
+
+    /**
+     * newGames , the List of Games to be displayed at the TableView.
+     */
+    private static ObservableList<GameDTO> newGames = FXCollections.observableArrayList();
+
+    /**
+     * searchGames , the List of Games to be displayed at the TableView.
+     */
+    private static ObservableList<GameDTO> searchGames = FXCollections.observableArrayList();
+    private static GameDTO searchGame;
+
+    /**
      * developers , the List of Developers to be displayed at the TableView.
      * developer , the selected Developer to work with.
      */
@@ -209,5 +225,37 @@ public class AppData {
 
     public static void setReview(Review review) {
         AppData.review = review;
+    }
+
+    public static ObservableList<GameDTO> getRecommendedGames() {
+        return recommendedGames;
+    }
+
+    public static void setRecommendedGames(ObservableList<GameDTO> recommendedGames) {
+        AppData.recommendedGames = recommendedGames;
+    }
+
+    public static ObservableList<GameDTO> getNewGames() {
+        return newGames;
+    }
+
+    public static void setNewGames(ObservableList<GameDTO> newGames) {
+        AppData.newGames = newGames;
+    }
+
+    public static ObservableList<GameDTO> getSearchGames() {
+        return searchGames;
+    }
+
+    public static void setSearchGames(ObservableList<GameDTO> searchGames) {
+        AppData.searchGames = searchGames;
+    }
+
+    public static GameDTO getSearchGame() {
+        return searchGame;
+    }
+
+    public static void setSearchGame(GameDTO searchGame) {
+        AppData.searchGame = searchGame;
     }
 }
