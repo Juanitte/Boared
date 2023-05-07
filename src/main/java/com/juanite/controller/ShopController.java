@@ -57,12 +57,6 @@ public class ShopController {
     @FXML
     public MenuItem mi_1;
     @FXML
-    public MenuItem mi_2;
-    @FXML
-    public MenuItem mi_3;
-    @FXML
-    public MenuItem mi_4;
-    @FXML
     public TableView<GameDTO> tv_suggestions;
     @FXML
     public TableColumn<GameDTO,ImageView> tc_suggestionsLogo;
@@ -185,13 +179,17 @@ public class ShopController {
         if(!txtfld_search.getText().equals("")) {
             AppData.setPreviousScene("games");
             try (GameDAO gdao = new GameDAO()) {
-                AppData.setGames(gdao.findContainingTitles(txtfld_search.getText()));
+                AppData.setSearchGames(gdao.findContainingTitles(txtfld_search.getText()));
             }
         }
     }
 
     @FXML
-    public void menuItemValidate(){
-
+    public void getRecommendedGames() {
+        if(AppData.getRecommendedGames().isEmpty()) {
+            AppData.getRecommendedGames().addAll();
+        }else{
+            AppData.getRecommendedGames().clear();
+        }
     }
 }

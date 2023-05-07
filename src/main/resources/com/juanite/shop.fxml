@@ -117,17 +117,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Label>
-   <TextField fx:id="txtfld_search" layoutX="560.0" layoutY="72.0" prefHeight="25.0" prefWidth="203.0">
-      <contextMenu>
-         <ContextMenu fx:id="cm_searchSuggestions">
-           <items>
-             <MenuItem fx:id="mi_1" mnemonicParsing="false" onAction="#menuItemValidate" text="Unspecified Action" />
-               <MenuItem fx:id="mi_2" mnemonicParsing="false" onAction="#menuItemValidate" text="Unspecified Action" />
-               <MenuItem fx:id="mi_3" mnemonicParsing="false" onAction="#menuItemValidate" text="Unspecified Action" />
-               <MenuItem fx:id="mi_4" mnemonicParsing="false" onAction="#menuItemValidate" text="Unspecified Action" />
-           </items>
-         </ContextMenu>
-      </contextMenu></TextField>
+   <TextField fx:id="txtfld_search" layoutX="560.0" layoutY="72.0" onKeyTyped="#txtfldSearchUpdate" prefHeight="25.0" prefWidth="203.0" />
     <Button fx:id="btn_search" alignment="CENTER" layoutX="484.0" layoutY="71.0" mnemonicParsing="false" onMouseClicked="#btnSearchValidate" style="-fx-background-color: #414141; -fx-background-radius: 7; -fx-border-style: solid; -fx-border-radius: 7; -fx-border-color: #515151;" text="SEARCH" textFill="#c1c1c1" AnchorPane.rightAnchor="254.0">
         <cursor>
             <Cursor fx:constant="HAND" />

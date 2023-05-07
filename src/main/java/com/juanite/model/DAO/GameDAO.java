@@ -2,9 +2,11 @@ package com.juanite.model.DAO;
 
 import com.juanite.model.DTO.GameDTO;
 import com.juanite.model.connections.ConnectionMySQL;
+import com.juanite.model.domain.Countries;
 import com.juanite.model.domain.Game;
 import com.juanite.model.domain.Tags;
 import com.juanite.model.domain.User;
+import com.juanite.util.AppData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -28,6 +30,8 @@ public class GameDAO implements DAO {
     private final static String UPDATE = "UPDATE game SET title=?, description=?, tags=?, release_date=?, price=?, logo=?, score=?, images=?, dev_id=? WHERE code=?";
     private final static String DELETE = "DELETE FROM game WHERE code=?";
     private final static String GETCODE = "SELECT code FROM game WHERE title=?";
+    private final static String USERTAGS = "SELECT g.tags AS tags FROM game g JOIN user_games ug ON g.code = ug.game_code WHERE ug.user_id = ?";
+    private final static String COUNTGAMESBYTAGS = "SELECT COUNT(g.title) AS number, SUBSTRING(g.tags, LOCATE(?, g.tags)) AS tag FROM game g JOIN user_games ug ON g.code = ug.game_code WHERE g.tags LIKE ? AND ug.user_id = ?";
 
     private Connection conn;
 
@@ -314,6 +318,84 @@ public class GameDAO implements DAO {
             }
         }
         return -1;
+    }
+
+    /**
+     * Method that gets all the Tags of a User's Game List.
+     * @param user , the User to check.
+     * @return a Set of Tags containing all Tags the User likes.
+     */
+    public Set<Tags> getUserTags(User user) throws Exception {
+        Set<Tags> userTags = new HashSet<Tags>();
+        if (user != null) {
+            try (PreparedStatement pst = this.conn.prepareStatement(USERTAGS)) {
+                try (UserDAO udao = new UserDAO()) {
+                    pst.setInt(1, udao.getId(AppData.getUser()));
+                    try(ResultSet res = pst.executeQuery()) {
+                        Set<Tags> aux = new HashSet<Tags>();
+                        while (res.next()) {
+                            aux = convertTags(res);
+                            userTags.addAll(aux);
+                        }
+                    }
+                }
+            }
+        }
+        return userTags;
+    }
+
+    /**
+     * Method that gets a List of Game Tags, in usage order, from a User.
+     * @param user , the user to check.
+     * @param userTags , the Set of Tags used by that User.
+     * @return the List of Tags in order of usage from most to least.
+     */
+    public List<Tags> getUserTagsOrdered(User user, Set<Tags> userTags) throws Exception {
+        List<Tags> preferenceTags = new ArrayList<Tags>();
+        if(user != null && !userTags.isEmpty()) {
+            Map<Tags,Integer> usedTags = new HashMap<Tags,Integer>();
+            try (PreparedStatement pst = this.conn.prepareStatement(COUNTGAMESBYTAGS)) {
+                try (UserDAO udao = new UserDAO()) {
+                    for(Tags tag : userTags) {
+                        pst.setString(1, tag.name());
+                        pst.setString(2, "%" + tag.name() + "%");
+                        pst.setInt(3, udao.getId(user));
+                        try(ResultSet res = pst.executeQuery()){
+                            usedTags.put(Tags.valueOf(res.getString("tag")), res.getInt("number"));
+                        }
+                    }
+                    usedTags = reorganizeMap(usedTags);
+                    preferenceTags.addAll(usedTags.keySet());
+                }
+            }
+        }
+        return preferenceTags;
+    }
+
+    /**
+     * Method that reorganizes the User's Tag's usage HashMap to get it ready to be converted to List.
+     * @param map , the HashMap to reorganize.
+     * @return the new HashMap.
+     */
+    public Map<Tags,Integer> reorganizeMap(Map<Tags,Integer> map) {
+        Map<Tags,Integer> result = new HashMap<Tags,Integer>();
+        while(!map.isEmpty()) {
+            int number = 0;
+            Tags tag = Tags.NONE;
+            for(Integer i : map.values()) {
+                if(i > number) {
+                    number = i;
+                    for(Tags t : map.keySet()) {
+                        if(Objects.equals(map.get(t), i)) {
+                            tag = t;
+                        }
+                    }
+                }
+            }
+            result.put(tag, number);
+            map.remove(tag);
+        }
+        return result;
     }
 
     /**
